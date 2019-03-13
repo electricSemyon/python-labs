@@ -29,7 +29,6 @@ class BisectionTest(unittest.TestCase):
       return 2 ** x + cos(x)
 
     expected_result = -1.85205078125
-
     self.assertEqual(bisect(fn, -2.0, -1.0, 10), expected_result)
 
   def test_no_roots_on_range_case(self):
@@ -37,7 +36,6 @@ class BisectionTest(unittest.TestCase):
       return 2 ** x + cos(x)
 
     expected_result = None
-
     self.assertEqual(bisect(fn, 1.0, 2.0, 10), expected_result)
 
 unittest.main()

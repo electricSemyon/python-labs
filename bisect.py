@@ -26,16 +26,16 @@ def bisect(fn, low, high, iterations):
 class BisectionTest(unittest.TestCase):
   def test_root_finding_on_range(self):
     def fn(x):
-      return 2 ** x + cos(x)
+      return x ** 2 * cos(2 * x) + 1
 
-    expected_result = -1.85205078125
+    expected_result = -1.18310546875
     self.assertEqual(bisect(fn, -2.0, -1.0, 10), expected_result)
 
   def test_no_roots_on_range_case(self):
     def fn(x):
-      return 2 ** x + cos(x)
+      return x ** 2 * cos(2 * x) + 1
 
     expected_result = None
-    self.assertEqual(bisect(fn, 1.0, 2.0, 10), expected_result)
+    self.assertEqual(bisect(fn, -1.0, 1.0, 10), expected_result)
 
 unittest.main()

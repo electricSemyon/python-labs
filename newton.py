@@ -1,4 +1,5 @@
 from math import cos, sin
+from scipy.optimize import fsolve
 import unittest
 
 def dx(f, x):
@@ -24,8 +25,8 @@ class NewtonTest(unittest.TestCase):
       return x ** 2 * cos(2 * x) + 1
       
     actual_result = newton(f, df, 2, 0.0001)
-    expected_result = (1.1832211213551906, -5.082387317756343e-05, 12)
+    expected_result = fsolve(f, 1)[0]
 
-    self.assertEqual(actual_result, expected_result)
+    self.assertTrue(abs(actual_result[0] - expected_result) < .0001)
 
 unittest.main()

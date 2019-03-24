@@ -1,4 +1,5 @@
 from math import cos
+from scipy.optimize import fsolve
 import unittest
 
 def are_samesigned(x, y):
@@ -28,8 +29,8 @@ class BisectionTest(unittest.TestCase):
     def fn(x):
       return x ** 2 * cos(2 * x) + 1
 
-    expected_result = -1.18310546875
-    self.assertEqual(bisect(fn, -2.0, -1.0, 10), expected_result)
+    expected_result = fsolve(fn, -1.0)[0]
+    self.assertTrue(abs(bisect(fn, -2.0, -1.0, 20) - expected_result) < .00001)
 
   def test_no_roots_on_range_case(self):
     def fn(x):
